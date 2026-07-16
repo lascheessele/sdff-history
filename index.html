@@ -338,6 +338,23 @@ function pairGames(a,b){return D.games.filter(g=>(g.homeMgr==a&&g.awayMgr==b)||(
 function renderH2H(){let a=$('#h2hA').value,b=$('#h2hB').value,gs=pairGames(a,b),aw=0,bw=0,ap=0,bp=0;gs.forEach(g=>{let ah=g.homeMgr==a;ap+=ah?g.homeScore:g.awayScore;bp+=ah?g.awayScore:g.homeScore;let win=g.winner=='HOME'?g.homeMgr:g.awayMgr;if(win==a)aw++;if(win==b)bw++});$('#h2hCards').innerHTML=a==b?'<div class="panel">Select two different managers.</div>':`<div class="cards"><div class="card fade-card"><div class="lbl">Series Leader</div><div class="big">${aw==bw?'Dead Even':aw>bw?a:b}</div><div class="note">${aw}-${bw}</div></div><div class="card fade-card"><div class="lbl">Meetings</div><div class="big">${gs.length}</div><div class="note">Documented grudges</div></div><div class="card fade-card"><div class="lbl">Total Points</div><div class="big">${fmt(ap,1)}–${fmt(bp,1)}</div><div class="note">${a} vs ${b}</div></div><div class="card fade-card"><div class="lbl">Avg Margin</div><div class="big">${gs.length?fmt(Math.abs(ap-bp)/gs.length,1):'0.0'}</div><div class="note">points per meeting</div></div></div>`}
 function renderMatrix(){let ns=D.managers.map(x=>x.manager).sort(),html='<table><thead><tr><th>Manager</th>'+ns.map(n=>`<th>${n.split(' ')[0]}</th>`).join('')+'</tr></thead><tbody>';for(let a of ns){html+=`<tr><td><b>${a}</b></td>`;for(let b of ns){if(a==b){html+='<td>—</td>';continue}let gs=pairGames(a,b),w=0,l=0;gs.forEach(g=>{let win=g.winner=='HOME'?g.homeMgr:g.awayMgr;if(win==a)w++;if(win==b)l++});html+=`<td>${w}-${l}</td>`}html+='</tr>'}html+='</tbody></table>';$('#matrix').innerHTML=html}
 
+function tradeCard(t){
+ const e=t.evaluation||{};
+ const sideA=e.sideA||{};
+ const sideB=e.sideB||{};
+ const gradeClass=g=>String(g||'').startsWith('A')?'good':(['D','F'].includes(String(g||'').charAt(0))?'bad':'');
+ const assetList=assets=>assets.map(a=>`<li><b>${a.name}</b>${a.position?` <span class="small">· ${a.position}${a.proTeam?` · ${a.proTeam}`:''}</span>`:''}</li>`).join('');
+ const winner=e.advantage>=0?t.managerA:t.managerB;
+ return `<div class="trade-card fade-card" style="border-left:4px solid ${managerColor(t.managerA)}">
+  <div class="trade-date"><b>${t.date}</b><span>${t.season} · Week ${t.tradeWeek||'—'}</span></div>
+  <div class="trade-sides">
+   <div class="trade-side"><div style="display:flex;justify-content:space-between;gap:10px"><div><div class="mgr">${managerChip(t.managerA)}</div><div class="team">${t.teamA||''}</div></div><span class="trade-grade ${gradeClass(e.gradeA)}">${e.gradeA||'—'}</span></div><ul>${assetList(t.assetsA||[])}</ul><div class="trade-evidence"><b>Est. value:</b> ${Number(sideA.estimatedPlayerValue||0).toFixed(1)} · <b>Post-trade:</b> ${(sideA.postTrade||{}).wins||0}-${(sideA.postTrade||{}).losses||0} · <b>Outcome:</b> ${sideA.outcomeLabel||'—'}</div></div>
+   <div class="trade-arrow">⇄</div>
+   <div class="trade-side"><div style="display:flex;justify-content:space-between;gap:10px"><div><div class="mgr">${managerChip(t.managerB)}</div><div class="team">${t.teamB||''}</div></div><span class="trade-grade ${gradeClass(e.gradeB)}">${e.gradeB||'—'}</span></div><ul>${assetList(t.assetsB||[])}</ul><div class="trade-evidence"><b>Est. value:</b> ${Number(sideB.estimatedPlayerValue||0).toFixed(1)} · <b>Post-trade:</b> ${(sideB.postTrade||{}).wins||0}-${(sideB.postTrade||{}).losses||0} · <b>Outcome:</b> ${sideB.outcomeLabel||'—'}</div></div>
+  </div>
+  <div class="trade-eval"><b>Retrospective edge:</b> ${winner} +${Math.abs(Number(e.advantage||0)).toFixed(1)} <span class="trade-confidence">${e.confidence||'Low'} confidence</span></div>
+ </div>`;
+}
 function trades(){
  const all=TRADES;
  const seasons=[...new Set(all.map(t=>t.season))].sort((a,b)=>a-b);
