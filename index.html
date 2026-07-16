@@ -766,6 +766,33 @@ footer{padding-top:40px}
  .premium-story .story-title{font-size:24px}
  .page-signature .t{font-size:21px}
 }
+
+/* ===== STREAMLINED SIX-SECTION UI ===== */
+.subnav-wrap{display:none;position:sticky;top:51px;z-index:19;background:rgba(10,15,23,.96);border-bottom:1px solid var(--line);padding:9px 28px;backdrop-filter:blur(12px)}
+.subnav-wrap.on{display:block}
+.subnav{max-width:1280px;margin:0 auto;display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.subnav::-webkit-scrollbar{display:none}
+.subnav button{flex:0 0 auto;border:1px solid var(--line);background:var(--panel);color:var(--dim);border-radius:9px;padding:7px 12px;font-size:12px;font-weight:750;cursor:pointer;white-space:nowrap}
+.subnav button.on{background:var(--accentSoft);border-color:rgba(255,176,46,.48);color:var(--accent)}
+.stream-home-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0 28px}
+.stream-home-link{display:block;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:16px;transition:transform .18s ease,border-color .18s ease}
+.stream-home-link:hover{transform:translateY(-2px);border-color:#3d5270}
+.stream-home-link .k{color:var(--accent);font-size:10px;text-transform:uppercase;letter-spacing:.5px;font-weight:800}
+.stream-home-link .t{font-size:17px;font-weight:850;margin-top:4px}
+.stream-home-link .d{font-size:12px;color:var(--dim);line-height:1.45;margin-top:5px}
+.section-intro-strip{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 14px;margin-bottom:16px;border:1px solid var(--line);border-radius:11px;background:var(--panel)}
+.section-intro-strip .copy{font-size:12px;color:var(--dim)}
+@media(max-width:900px){
+ .subnav-wrap{top:59px;padding:8px 14px}
+ .stream-home-links{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:620px){
+ .subnav-wrap{top:61px;padding:7px 10px}
+ .subnav button{min-height:38px;padding:7px 11px}
+ .stream-home-links{grid-template-columns:1fr}
+ .section-intro-strip{display:block}
+ .section-intro-strip .copy{margin-top:4px}
+}
 </style></head><body><div class="shell"><header><div class="eyebrow">ESPN League 338168554 · Established 2021</div><h1>🏈 SDFF League History</h1><div class="sub">ESPN league history · 2021–2025 completed seasons</div><div class="header-pills"><span>🏆 Championships</span><span>📊 Career Stats</span><span>⚔️ Head-to-Head</span><span>🎲 Wacky Stats</span></div></header><nav id="nav"></nav>
 <div class="mobile-page-select-wrap">
   <select id="mobilePageSelect" class="mobile-page-select" aria-label="Choose dashboard page"></select>
@@ -813,7 +840,43 @@ function escAttr(v){return String(v??'').replaceAll('&','&amp;').replaceAll('\"'
 function award(i,t,w,d,more=''){return `<div class="award ${more?'clickable':''}" ${more?`data-icon="${escAttr(i)}" data-title="${escAttr(t)}" data-who="${escAttr(w)}" data-detail="${escAttr(d)}" data-more="${escAttr(more)}"`:''}><div class="icon">${i}</div><div class="lbl">${t}</div><div class="who">${w}</div><div class="det">${d}</div>${more?'<div class="more">View details</div>':''}</div>`}
 function initAwardModal(){const m=$('#awardModal');document.addEventListener('click',e=>{const a=e.target.closest('.award.clickable');if(a){$('#modalBody').innerHTML=`<div class="modal-icon">${a.dataset.icon}</div><h2>${a.dataset.title}</h2><div class="modal-who">${a.dataset.who}</div><div class="modal-detail"><b>${a.dataset.detail}</b><br><br>${a.dataset.more}</div>`;m.classList.add('on')}if(e.target===m||e.target.closest('.modal-close'))m.classList.remove('on')});document.addEventListener('keydown',e=>{if(e.key==='Escape')m.classList.remove('on')})}
 function bars(el,rows,name,val){let max=Math.max(...rows.map(r=>Math.abs(r[val])),1);el.innerHTML=rows.map(r=>`<div class="barrow"><div>${r[name]}</div><div class="track"><div class="fill" style="width:${100*Math.abs(r[val])/max}%"></div></div><div>${fmt(r[val],1)}</div></div>`).join('')}
-function initNav(){const tabs=[['overview','Overview'],['managers','Managers'],['standings','All-Time'],['seasons','Seasons'],['h2h','Head-to-Head'],['trades','Trades'],['museum','Museum'],['records','Records'],['luck','Luck & Efficiency'],['superlatives','Superlatives'],['wacky','Wacky Stats'],['matchups','Matchups']];$('#nav').innerHTML=tabs.map((x,i)=>`<button data-id="${x[0]}" class="${i?'':'on'}">${x[1]}</button>`).join('');$('#app').innerHTML=tabs.map((x,i)=>`<section id="${x[0]}" class="section ${i?'':'on'}"></section>`).join('');$('#nav').onclick=e=>{if(!e.target.dataset.id)return;$$('nav button,.section').forEach(x=>x.classList.remove('on'));e.target.classList.add('on');$('#'+e.target.dataset.id).classList.add('on');history.replaceState(null,'','#'+e.target.dataset.id);window.scrollTo({top:0,behavior:'smooth'})};const requested=location.hash.slice(1);if(requested&&$('#'+requested)){const b=document.querySelector('nav button[data-id="'+requested+'"]');if(b)b.click()}}
+function initNav(){
+ const groups=[
+  {id:'home',label:'Home',pages:[['overview','Home']]},
+  {id:'franchises',label:'Franchises',pages:[['managers','Profiles'],['standings','All-Time'],['h2h','Rivalries']]},
+  {id:'seasonshub',label:'Seasons',pages:[['seasons','Season Rewinds'],['matchups','Matchups']]},
+  {id:'tradeshub',label:'Trades',pages:[['trades','Trade Center']]},
+  {id:'recordshub',label:'Records',pages:[['records','Record Book'],['luck','Luck & Efficiency'],['superlatives','Superlatives'],['wacky','Wacky Stats']]},
+  {id:'museumhub',label:'Museum',pages:[['museum','Museum']]}
+ ];
+ const allPages=groups.flatMap(g=>g.pages);
+ $('#nav').innerHTML=groups.map((g,i)=>`<button data-group="${g.id}" class="${i?'':'on'}">${g.label}</button>`).join('');
+ $('#app').innerHTML=`<div id="subnavWrap" class="subnav-wrap"><div id="subnav" class="subnav"></div></div>`+allPages.map((x,i)=>`<section id="${x[0]}" class="section ${i?'':'on'}"></section>`).join('');
+ const pageToGroup={};groups.forEach(g=>g.pages.forEach(p=>pageToGroup[p[0]]=g.id));
+ const showPage=(pageId,push=true)=>{
+  const group=groups.find(g=>g.id===pageToGroup[pageId])||groups[0];
+  $$('.section').forEach(x=>x.classList.remove('on'));
+  const target=$('#'+pageId);if(target)target.classList.add('on');
+  $$('#nav button').forEach(x=>x.classList.toggle('on',x.dataset.group===group.id));
+  const wrap=$('#subnavWrap'),sub=$('#subnav');
+  if(group.pages.length>1){
+   wrap.classList.add('on');
+   sub.innerHTML=group.pages.map(p=>`<button data-page="${p[0]}" class="${p[0]===pageId?'on':''}">${p[1]}</button>`).join('');
+  }else{wrap.classList.remove('on');sub.innerHTML=''}
+  if(push)history.replaceState(null,'','#'+pageId);
+  window.scrollTo({top:0,behavior:'smooth'});
+ };
+ const openGroup=groupId=>{
+  const group=groups.find(g=>g.id===groupId)||groups[0];
+  showPage(group.pages[0][0]);
+ };
+ $('#nav').onclick=e=>{const b=e.target.closest('button[data-group]');if(b)openGroup(b.dataset.group)};
+ $('#subnavWrap').onclick=e=>{const b=e.target.closest('button[data-page]');if(b)showPage(b.dataset.page)};
+ document.addEventListener('click',e=>{const a=e.target.closest('[data-open-page]');if(a){e.preventDefault();showPage(a.dataset.openPage)}});
+ const requested=location.hash.slice(1);
+ showPage(pageToGroup[requested]?requested:'overview',false);
+ window.SDFF_NAV={showPage,openGroup,groups};
+}
 function overview(){
  const done=D.seasons,goat=D.managers[0],titleKing=[...D.managers].sort((a,b)=>b.titles-a.titles||b.legacy-a.legacy)[0];
  const latest=[...done].sort((a,b)=>b.year-a.year)[0];
@@ -860,7 +923,14 @@ function overview(){
  <div class="trophy-cabinet">${done.map(s=>{const cs=s.coChampions||[s.champion];return `<div class="trophy-shelf"><div class="yr">${s.year}</div><div class="champ">${cs.map(c=>c.manager).join(' & ')}</div><div class="rings">${s.coChampions?'🏆🏆':'🏆'}</div><div class="small">${cs.map(c=>c.team).join(' / ')}</div></div>`}).join('')}</div>
  <h3>Legacy Leaders</h3>
  <div class="award-grid">${award('👑','Legacy Leader',goat.manager,'Score '+goat.legacy)}${award('🔥','Best Career Win %',[...D.managers].sort((a,b)=>b.winPct-a.winPct)[0].manager,pct([...D.managers].sort((a,b)=>b.winPct-a.winPct)[0].winPct))}${award('🍀','Most Wins Above Expected',[...D.managers].sort((a,b)=>b.luck-a.luck)[0].manager,'+'+fmt([...D.managers].sort((a,b)=>b.luck-a.luck)[0].luck,1))}${award('😭','Most Wins Below Expected',[...D.managers].sort((a,b)=>a.luck-b.luck)[0].manager,fmt([...D.managers].sort((a,b)=>a.luck-b.luck)[0].luck,1))}</div>
- <h3>League Timeline</h3>
+ <div class="stream-home-links">
+ <a href="#managers" data-open-page="managers" class="stream-home-link"><div class="k">Franchises</div><div class="t">Manager profiles and rivalries</div><div class="d">Career résumés, all-time rankings, team-name histories, and head-to-head records.</div></a>
+ <a href="#seasons" data-open-page="seasons" class="stream-home-link"><div class="k">Seasons</div><div class="t">Year-by-year archive</div><div class="d">Season rewinds, final standings, defining moments, and every completed matchup.</div></a>
+ <a href="#trades" data-open-page="trades" class="stream-home-link"><div class="k">Trades</div><div class="t">Trade Center</div><div class="d">Searchable history, evidence-based grades, GM rankings, and trade relationships.</div></a>
+ <a href="#records" data-open-page="records" class="stream-home-link"><div class="k">Records</div><div class="t">Records and advanced analytics</div><div class="d">Record book, luck, efficiency, superlatives, and the strangest statistics.</div></a>
+ <a href="#museum" data-open-page="museum" class="stream-home-link"><div class="k">Museum</div><div class="t">League lore and milestones</div><div class="d">Championship history, iconic moments, historic team names, and archive exhibits.</div></a>
+ <a href="#h2h" data-open-page="h2h" class="stream-home-link"><div class="k">Quick Access</div><div class="t">Open the Rivalry Center</div><div class="d">Compare any two managers and settle a very specific argument immediately.</div></a>
+ </div><h3>League Timeline</h3>
  <div class="panel"><div class="timeline-rail">${done.map(s=>{const cs=s.coChampions||[s.champion];return `<div class="timeline-event"><div class="yr">${s.year}</div><div class="evt">${cs.map(c=>c.manager).join(' & ')}</div><div class="desc">${cs.map(c=>c.team).join(' / ')}${s.championshipNote?' · shared championship':''}</div></div>`}).join('')}</div></div>`;
  document.querySelectorAll('[data-jump]').forEach(b=>b.addEventListener('click',()=>document.querySelector(`nav button[data-id="${b.dataset.jump}"]`)?.click()));
 }
@@ -1199,7 +1269,7 @@ function matchups(){let years=D.seasons.map(s=>s.year).sort((a,b)=>b-a),latest=y
 function renderMatches(){let y=+$('#matchYear').value,w=+$('#matchWeek').value,gs=D.games.filter(g=>g.year==y&&g.week==w);$('#matchList').innerHTML=gs.map(g=>`<div class="match"><div><b>${g.homeMgr}</b><div class="note">${g.home}</div></div><div class="score">${fmt(g.homeScore,2)} – ${fmt(g.awayScore,2)}<div style="text-align:center"><span class="pill">${g.tier==='NONE'?'Regular Season':g.tier.replaceAll('_',' ')}</span></div></div><div class="r"><b>${g.awayMgr}</b><div class="note">${g.away}</div></div></div>`).join('')||'<div class="note">No matchups</div>'}
 
 function setupMobileUI(){
-  const navButtons=[...document.querySelectorAll('#nav button')];
+  const navButtons=[...document.querySelectorAll('#nav button[data-group]')];
   const sel=document.querySelector('#mobilePageSelect');
   if(sel){
     sel.innerHTML=navButtons.map((b,i)=>`<option value="${i}">${b.textContent}</option>`).join('');
