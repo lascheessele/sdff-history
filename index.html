@@ -447,6 +447,147 @@ footer{padding-top:40px}
   .trade-network-svg{height:290px}
   .trade-network-wrap{min-height:315px}
 }
+
+/* ===== MOBILE FIX: PLAYER JOURNEYS + BUY/SELL SIGNALS ===== */
+@media(max-width:700px){
+  /* Player trade journeys become a vertical timeline */
+  #playerJourneyView{overflow:visible}
+  #playerJourneyView .player-journey{
+    display:block;
+    overflow:visible;
+    padding:6px 0 0 18px;
+    position:relative;
+  }
+  #playerJourneyView .player-journey::before{
+    content:"";
+    position:absolute;
+    left:7px;
+    top:10px;
+    bottom:10px;
+    width:2px;
+    background:var(--line);
+  }
+  #playerJourneyView .journey-stop{
+    min-width:0;
+    width:100%;
+    margin:0 0 14px;
+    padding:14px 14px 14px 16px;
+    box-sizing:border-box;
+    position:relative;
+  }
+  #playerJourneyView .journey-stop::before{
+    content:"";
+    position:absolute;
+    left:-18px;
+    top:20px;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:var(--accent);
+    box-shadow:0 0 0 4px rgba(255,176,46,.13);
+  }
+  #playerJourneyView .journey-stop:not(:last-child)::after{
+    display:none;
+  }
+  #playerJourneyView .journey-stop .date{
+    font-size:11px;
+    line-height:1.35;
+  }
+  #playerJourneyView .journey-stop .mgr{
+    font-size:17px;
+    line-height:1.28;
+    overflow-wrap:anywhere;
+  }
+  #playerJourneyView .journey-stop .deal{
+    font-size:13px;
+    line-height:1.52;
+    overflow-wrap:anywhere;
+  }
+
+  /* Prevent section descriptions from running off-screen */
+  .trade-section-grid .panel .small,
+  .trade-method,
+  .signal-card .small{
+    white-space:normal;
+    overflow-wrap:anywhere;
+    word-break:normal;
+    max-width:100%;
+    line-height:1.5;
+  }
+
+  /* Buy-low / sell-high signals become compact vertical cards */
+  #tradeSignals{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:10px!important;
+  }
+  #tradeSignals .signal-card{
+    width:100%;
+    box-sizing:border-box;
+    padding:14px;
+    min-width:0;
+    overflow:hidden;
+  }
+  #tradeSignals .signal-card .label{
+    font-size:10px;
+    line-height:1.25;
+    letter-spacing:.45px;
+  }
+  #tradeSignals .signal-card .name{
+    font-size:18px;
+    line-height:1.25;
+    margin-top:5px;
+    overflow-wrap:anywhere;
+  }
+  #tradeSignals .signal-card .score{
+    font-size:31px;
+    line-height:1;
+    margin:8px 0 6px;
+  }
+  #tradeSignals .signal-card .small{
+    font-size:12px;
+    line-height:1.45;
+    color:var(--dim);
+  }
+
+  /* Ensure the two-column parent does not preserve desktop widths */
+  .trade-section-grid{
+    display:block!important;
+  }
+  .trade-section-grid > .panel{
+    width:100%;
+    max-width:100%;
+    box-sizing:border-box;
+    margin-bottom:14px;
+    overflow:hidden;
+  }
+
+  /* Better mobile selects in these sections */
+  #playerJourney,
+  #gmManager,
+  #networkManager{
+    width:100%;
+    min-width:0;
+    box-sizing:border-box;
+    font-size:15px;
+    min-height:44px;
+  }
+}
+
+@media(max-width:390px){
+  #playerJourneyView .journey-stop{
+    padding:12px 12px 12px 14px;
+  }
+  #playerJourneyView .journey-stop .mgr{
+    font-size:16px;
+  }
+  #tradeSignals .signal-card .name{
+    font-size:17px;
+  }
+  #tradeSignals .signal-card .score{
+    font-size:28px;
+  }
+}
 </style></head><body><div class="shell"><header><div class="eyebrow">ESPN League 338168554 · Established 2021</div><h1>🏈 SDFF League History</h1><div class="sub">ESPN league history · 2021–2025 completed seasons</div><div class="header-pills"><span>🏆 Championships</span><span>📊 Career Stats</span><span>⚔️ Head-to-Head</span><span>🎲 Wacky Stats</span></div></header><nav id="nav"></nav>
 <div class="mobile-page-select-wrap">
   <select id="mobilePageSelect" class="mobile-page-select" aria-label="Choose dashboard page"></select>
