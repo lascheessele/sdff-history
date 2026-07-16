@@ -588,6 +588,110 @@ footer{padding-top:40px}
     font-size:28px;
   }
 }
+
+/* ===== BEST TRADER COMPARISON ===== */
+.best-trader-panel{overflow:hidden}
+.best-trader-leader{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  margin:12px 0 18px;
+  padding:16px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:var(--panel2);
+}
+.best-trader-kicker{
+  color:var(--accent);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.55px;
+  text-transform:uppercase;
+}
+.best-trader-name{
+  margin-top:4px;
+  font-size:21px;
+  font-weight:900;
+  line-height:1.2;
+}
+.best-trader-score{
+  flex:0 0 auto;
+  color:var(--accent);
+  font-size:34px;
+  font-weight:900;
+  line-height:1;
+}
+.best-trader-chart{
+  display:grid;
+  gap:10px;
+}
+.trader-rank-row{
+  display:grid;
+  grid-template-columns:30px minmax(0,1fr) 64px;
+  gap:10px;
+  align-items:center;
+  padding:10px 0;
+  border-top:1px solid var(--line);
+}
+.trader-rank-number{
+  color:var(--dim);
+  font-size:13px;
+  font-weight:800;
+  text-align:center;
+}
+.trader-rank-name{
+  font-size:14px;
+  font-weight:850;
+}
+.trader-rank-meta{
+  margin-top:2px;
+  color:var(--dim);
+  font-size:10.5px;
+  line-height:1.35;
+  overflow-wrap:anywhere;
+}
+.trader-rank-track{
+  height:10px;
+  margin-top:7px;
+  overflow:hidden;
+  border-radius:999px;
+  background:rgba(255,255,255,.055);
+}
+.trader-rank-fill{
+  height:100%;
+  min-width:4px;
+  border-radius:999px;
+  transition:width .28s ease;
+}
+.trader-rank-value{
+  font-size:14px;
+  font-weight:900;
+  text-align:right;
+}
+@media(max-width:700px){
+  .best-trader-leader{
+    align-items:flex-start;
+    padding:14px;
+  }
+  .best-trader-name{font-size:18px}
+  .best-trader-score{font-size:28px}
+  .trader-rank-row{
+    grid-template-columns:24px minmax(0,1fr) 52px;
+    gap:7px;
+  }
+  .trader-rank-name{font-size:13px}
+  .trader-rank-meta{font-size:10px}
+  .trader-rank-value{font-size:12px}
+}
+@media(max-width:390px){
+  .best-trader-leader{
+    display:block;
+  }
+  .best-trader-score{
+    margin-top:10px;
+  }
+}
 </style></head><body><div class="shell"><header><div class="eyebrow">ESPN League 338168554 · Established 2021</div><h1>🏈 SDFF League History</h1><div class="sub">ESPN league history · 2021–2025 completed seasons</div><div class="header-pills"><span>🏆 Championships</span><span>📊 Career Stats</span><span>⚔️ Head-to-Head</span><span>🎲 Wacky Stats</span></div></header><nav id="nav"></nav>
 <div class="mobile-page-select-wrap">
   <select id="mobilePageSelect" class="mobile-page-select" aria-label="Choose dashboard page"></select>
@@ -739,7 +843,7 @@ function trades(){
   <div class="panel"><div class="gm-profile-head"><div><h3>GM Profile</h3><div class="small">Front-office results based on documented trade outcomes.</div></div><select id="gmManager">${mgrs.map(m=>`<option>${m}</option>`).join('')}</select></div><div id="gmProfile"></div></div>
  </div>
  <div class="trade-section-grid">
-  <div class="panel"><div class="gm-profile-head"><div><h3>Player Trade Journeys</h3><div class="small">Every confirmed trade appearance for the selected player.</div></div><select id="playerJourney">${playerRows.map(([p])=>`<option>${p}</option>`).join('')}</select></div><div id="playerJourneyView"></div></div>
+  <div class="panel best-trader-panel"><div class="gm-profile-head"><div><h3>Best Trader Comparison</h3><div class="small">Compare managers using retrospective trade outcomes, win rate, average advantage and trade volume.</div></div><select id="traderMetric"><option value="gmScore">Overall GM Rating</option><option value="winRate">Trade Win Rate</option><option value="avg">Average Outcome Advantage</option><option value="volume">Trade Volume</option></select></div><div id="bestTraderSummary"></div><div id="bestTraderChart" class="best-trader-chart"></div></div>
   <div class="panel"><h3>Buy-Low / Sell-High Signals</h3><div class="trade-method">These are retrospective signals, not reconstructed market values. A signal counts when a manager won the outcome grade despite acquiring the lower estimated incoming player value, or converted outgoing value into a stronger incoming result.</div><div id="tradeSignals" class="signal-grid"></div></div>
  </div>
  <div class="panel"><h3>Championship Butterfly Effects</h3><div class="small">Trades involving a manager who later won, shared, or reached the championship in that season. This shows sequence and outcome, not proof of causation.</div><div class="butterfly-list">${champTrades.map(t=>{const aChamp=t.evaluation.sideA.outcomeLabel,bChamp=t.evaluation.sideB.outcomeLabel,focus=aChamp==='Champion'||aChamp==='Runner-up'?t.managerA:t.managerB,side=sideObj(t,focus),assets=received(t,focus).map(a=>a.name).join(', ');return `<div class="butterfly-card"><div class="butterfly-flow"><div class="butterfly-step"><b>${t.date}</b><br><span class="small">${focus} acquired ${assets}</span></div><div class="butterfly-arrow">→</div><div class="butterfly-step"><b>${side.postTrade.wins}-${side.postTrade.losses}</b><br><span class="small">post-trade record</span></div><div class="butterfly-arrow">→</div><div class="butterfly-step"><b>${side.outcomeLabel}</b><br><span class="small">${t.season} outcome · grade ${sideGrade(t,focus)}</span></div></div></div>`}).join('')}</div></div>
@@ -761,18 +865,69 @@ function trades(){
   const buy=[...stats].sort((a,b)=>b.buySignal-a.buySignal)[0],sell=[...stats].sort((a,b)=>b.sellSignal-a.sellSignal)[0],value=[...stats].sort((a,b)=>b.avg-a.avg)[0],deadline=[...stats].sort((a,b)=>b.deadline-a.deadline)[0];
   $('#tradeSignals').innerHTML=`<div class="signal-card"><div class="label">Strongest Buy-Low Signal</div><div class="name">${buy.m}</div><div class="score">${buy.buySignal.toFixed(0)}%</div><div class="small">Share of trades won after receiving the lower estimated incoming value.</div></div><div class="signal-card"><div class="label">Strongest Sell-High Signal</div><div class="name">${sell.m}</div><div class="score">${sell.sellSignal.toFixed(0)}%</div><div class="small">Share of trades converting outgoing estimated value into a stronger incoming result.</div></div><div class="signal-card"><div class="label">Best Avg Trade Outcome</div><div class="name">${value.m}</div><div class="score">${value.avg>0?'+':''}${value.avg.toFixed(1)}</div><div class="small">Average retrospective advantage across all completed trades.</div></div><div class="signal-card"><div class="label">Deadline Dealer</div><div class="name">${deadline.m}</div><div class="score">${deadline.deadline}</div><div class="small">Trades completed in Week 10 or later.</div></div>`;
  };
- const renderJourney=()=>{
-  const p=$('#playerJourney').value,ts=all.filter(t=>[...t.assetsA,...t.assetsB].some(a=>a.name===p)).sort((a,b)=>a.date.localeCompare(b.date));
-  $('#playerJourneyView').innerHTML=`<div class="player-journey">${ts.map(t=>{const gotA=t.assetsA.some(a=>a.name===p),receiver=gotA?t.managerA:t.managerB,sender=gotA?t.managerB:t.managerA,grade=gotA?t.evaluation.gradeA:t.evaluation.gradeB;return `<div class="journey-stop"><div class="date">${t.date} · ${t.season}</div><div class="mgr">${receiver} acquired ${p}</div><div class="deal">From ${sender}<br>Deal grade for receiver: <b>${grade}</b><br>${gotA?t.assetsB.map(a=>a.name).join(', '):t.assetsA.map(a=>a.name).join(', ')} went the other way</div></div>`}).join('')}</div>`;
- };
+ const renderBestTrader=()=>{
+  const metric=$('#traderMetric').value;
+  const rows=mgrs.map(m=>{
+    const s=gmStats(m);
+    return {
+      manager:m,
+      gmScore:s.gmScore,
+      winRate:s.winRate*100,
+      avg:s.avg,
+      volume:s.ts.length,
+      wins:s.wins,
+      losses:s.losses,
+      pushes:s.pushes,
+      favorite:s.fav[0]
+    };
+  });
+
+  const config={
+    gmScore:{label:'GM Rating',suffix:'',decimals:0,positive:true},
+    winRate:{label:'Trade Win Rate',suffix:'%',decimals:0,positive:true},
+    avg:{label:'Average Outcome Advantage',suffix:'',decimals:1,positive:true},
+    volume:{label:'Completed Trades',suffix:'',decimals:0,positive:true}
+  }[metric];
+
+  rows.sort((a,b)=>b[metric]-a[metric]);
+  const max=Math.max(...rows.map(r=>Math.abs(r[metric])),1);
+  const leader=rows[0];
+
+  $('#bestTraderSummary').innerHTML=`
+    <div class="best-trader-leader">
+      <div>
+        <div class="best-trader-kicker">Current Leader</div>
+        <div class="best-trader-name">${leader.manager}</div>
+        <div class="small">${leader.wins}-${leader.losses}-${leader.pushes} trade record · ${leader.volume} completed trades</div>
+      </div>
+      <div class="best-trader-score">${leader[metric].toFixed(config.decimals)}${config.suffix}</div>
+    </div>`;
+
+  $('#bestTraderChart').innerHTML=rows.map((r,i)=>{
+    const raw=r[metric];
+    const width=Math.max(4,Math.abs(raw)/max*100);
+    const value=`${raw>0&&metric==='avg'?'+':''}${raw.toFixed(config.decimals)}${config.suffix}`;
+    return `<div class="trader-rank-row">
+      <div class="trader-rank-number">${i+1}</div>
+      <div class="trader-rank-info">
+        <div class="trader-rank-name">${r.manager}</div>
+        <div class="trader-rank-meta">${r.wins}-${r.losses}-${r.pushes} · ${r.volume} trades · favorite partner: ${r.favorite}</div>
+        <div class="trader-rank-track">
+          <div class="trader-rank-fill" style="width:${width}%;background:${managerColor(r.manager)}"></div>
+        </div>
+      </div>
+      <div class="trader-rank-value">${value}</div>
+    </div>`;
+  }).join('');
+};
  const setNetwork=m=>{
   document.querySelectorAll('.trade-network-node').forEach(n=>n.classList.toggle('active',!m||n.dataset.manager===m));
   document.querySelectorAll('.trade-network-edge').forEach(e=>e.classList.toggle('active',!m||e.dataset.a===m||e.dataset.b===m));
  };
  $('#networkManager').onchange=e=>setNetwork(e.target.value);
  document.querySelectorAll('.trade-network-node').forEach(n=>n.addEventListener('click',()=>{$('#networkManager').value=n.dataset.manager;setNetwork(n.dataset.manager)}));
- $('#gmManager').onchange=renderGM;$('#playerJourney').onchange=renderJourney;
- renderGM();renderSignals();renderJourney();setNetwork('');
+ $('#gmManager').onchange=renderGM;$('#traderMetric').onchange=renderBestTrader;
+ renderGM();renderSignals();renderBestTrader();setNetwork('');
  const render=()=>{let y=$('#tradeYear').value,m=$('#tradeManager').value,q=$('#tradeSearch').value.toLowerCase().trim();let rows=all.filter(t=>(!y||String(t.season)===y)&&(!m||t.managerA===m||t.managerB===m)&&(!q||JSON.stringify(t).toLowerCase().includes(q)));$('#tradeList').innerHTML=rows.length?rows.slice().reverse().map(t=>tradeCard(t)).join(''):'<div class="panel">No matching trades.</div>'};
  $('#tradeYear').onchange=render;$('#tradeManager').onchange=render;$('#tradeSearch').oninput=render;render();
  document.querySelectorAll('.trade-rank-row').forEach(row=>{const toggle=()=>{const id=row.dataset.rank,detail=document.querySelector(`[data-rank-detail="${id}"]`),open=!row.classList.contains('open');row.classList.toggle('open',open);detail.classList.toggle('open',open);row.setAttribute('aria-expanded',String(open))};row.addEventListener('click',toggle);row.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();toggle()}})});
