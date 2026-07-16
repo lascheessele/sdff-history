@@ -793,6 +793,12 @@ footer{padding-top:40px}
  .section-intro-strip{display:block}
  .section-intro-strip .copy{margin-top:4px}
 }
+
+.trade-methodology summary{cursor:pointer;color:var(--txt);list-style:none}
+.trade-methodology summary::-webkit-details-marker{display:none}
+.trade-methodology summary::after{content:"+";float:right;color:var(--accent);font-size:18px}
+.trade-methodology[open] summary::after{content:"−"}
+@media(min-width:901px){.trade-summary{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
 </style></head><body><div class="shell"><header><div class="eyebrow">ESPN League 338168554 · Established 2021</div><h1>🏈 SDFF League History</h1><div class="sub">ESPN league history · 2021–2025 completed seasons</div><div class="header-pills"><span>🏆 Championships</span><span>📊 Career Stats</span><span>⚔️ Head-to-Head</span><span>🎲 Wacky Stats</span></div></header><nav id="nav"></nav>
 <div class="mobile-page-select-wrap">
   <select id="mobilePageSelect" class="mobile-page-select" aria-label="Choose dashboard page"></select>
@@ -922,16 +928,7 @@ function overview(){
  <h3>Championship Cabinet</h3>
  <div class="trophy-cabinet">${done.map(s=>{const cs=s.coChampions||[s.champion];return `<div class="trophy-shelf"><div class="yr">${s.year}</div><div class="champ">${cs.map(c=>c.manager).join(' & ')}</div><div class="rings">${s.coChampions?'🏆🏆':'🏆'}</div><div class="small">${cs.map(c=>c.team).join(' / ')}</div></div>`}).join('')}</div>
  <h3>Legacy Leaders</h3>
- <div class="award-grid">${award('👑','Legacy Leader',goat.manager,'Score '+goat.legacy)}${award('🔥','Best Career Win %',[...D.managers].sort((a,b)=>b.winPct-a.winPct)[0].manager,pct([...D.managers].sort((a,b)=>b.winPct-a.winPct)[0].winPct))}${award('🍀','Most Wins Above Expected',[...D.managers].sort((a,b)=>b.luck-a.luck)[0].manager,'+'+fmt([...D.managers].sort((a,b)=>b.luck-a.luck)[0].luck,1))}${award('😭','Most Wins Below Expected',[...D.managers].sort((a,b)=>a.luck-b.luck)[0].manager,fmt([...D.managers].sort((a,b)=>a.luck-b.luck)[0].luck,1))}</div>
- <div class="stream-home-links">
- <a href="#managers" data-open-page="managers" class="stream-home-link"><div class="k">Franchises</div><div class="t">Manager profiles and rivalries</div><div class="d">Career résumés, all-time rankings, team-name histories, and head-to-head records.</div></a>
- <a href="#seasons" data-open-page="seasons" class="stream-home-link"><div class="k">Seasons</div><div class="t">Year-by-year archive</div><div class="d">Season rewinds, final standings, defining moments, and every completed matchup.</div></a>
- <a href="#trades" data-open-page="trades" class="stream-home-link"><div class="k">Trades</div><div class="t">Trade Center</div><div class="d">Searchable history, evidence-based grades, GM rankings, and trade relationships.</div></a>
- <a href="#records" data-open-page="records" class="stream-home-link"><div class="k">Records</div><div class="t">Records and advanced analytics</div><div class="d">Record book, luck, efficiency, superlatives, and the strangest statistics.</div></a>
- <a href="#museum" data-open-page="museum" class="stream-home-link"><div class="k">Museum</div><div class="t">League lore and milestones</div><div class="d">Championship history, iconic moments, historic team names, and archive exhibits.</div></a>
- <a href="#h2h" data-open-page="h2h" class="stream-home-link"><div class="k">Quick Access</div><div class="t">Open the Rivalry Center</div><div class="d">Compare any two managers and settle a very specific argument immediately.</div></a>
- </div><h3>League Timeline</h3>
- <div class="panel"><div class="timeline-rail">${done.map(s=>{const cs=s.coChampions||[s.champion];return `<div class="timeline-event"><div class="yr">${s.year}</div><div class="evt">${cs.map(c=>c.manager).join(' & ')}</div><div class="desc">${cs.map(c=>c.team).join(' / ')}${s.championshipNote?' · shared championship':''}</div></div>`}).join('')}</div></div>`;
+ <div class="award-grid">${award('👑','Legacy Leader',goat.manager,'Score '+goat.legacy)}${award('🔥','Best Career Win %',[...D.managers].sort((a,b)=>b.winPct-a.winPct)[0].manager,pct([...D.managers].sort((a,b)=>b.winPct-a.winPct)[0].winPct))}${award('🍀','Most Wins Above Expected',[...D.managers].sort((a,b)=>b.luck-a.luck)[0].manager,'+'+fmt([...D.managers].sort((a,b)=>b.luck-a.luck)[0].luck,1))}${award('😭','Most Wins Below Expected',[...D.managers].sort((a,b)=>a.luck-b.luck)[0].manager,fmt([...D.managers].sort((a,b)=>a.luck-b.luck)[0].luck,1))}</div>`;
  document.querySelectorAll('[data-jump]').forEach(b=>b.addEventListener('click',()=>document.querySelector(`nav button[data-id="${b.dataset.jump}"]`)?.click()));
 }
 function managers(){let names=D.managers.map(x=>x.manager).sort();$('#managers').innerHTML=`${pageSignature('managers','Franchise Profiles','Managers','Career résumés, championship rings, rivalries, trade history, and the identity of every SDFF franchise.')}<div class="ctrls"><select class="profile-select" id="profileSel">${names.map(n=>`<option>${n}</option>`).join('')}</select></div><div id="profile"></div>`;$('#profileSel').onchange=renderProfile;renderProfile()}
@@ -1019,29 +1016,15 @@ function trades(){
  const nodeMap=Object.fromEntries(nodes.map(n=>[n.m,n]));
  const edges=pairRows.map(([p,n])=>{const [a,b]=p.split('|||');return {a,b,n}});
  const networkSvg=`<svg class="trade-network-svg" viewBox="0 0 ${networkW} ${networkH}" role="img" aria-label="Trade network">${edges.map(e=>{const a=nodeMap[e.a],b=nodeMap[e.b];return `<line class="trade-network-edge" data-a="${e.a}" data-b="${e.b}" x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}" stroke-width="${1.5+e.n*1.5}"><title>${e.a} and ${e.b}: ${e.n} trades</title></line>`}).join('')}${nodes.map(n=>`<g class="trade-network-node" data-manager="${n.m}" transform="translate(${n.x},${n.y})"><circle r="${18+Math.min(n.n,25)*.55}" style="fill:${managerColor(n.m)}22;stroke:${managerColor(n.m)}"></circle><text y="4">${n.m.split(' ')[0]}</text><title>${n.m}: ${n.n} trades</title></g>`).join('')}</svg>`;
- const champTrades=all.filter(t=>{
-  const a=t.evaluation.sideA.outcomeLabel,b=t.evaluation.sideB.outcomeLabel;
-  return a==='Champion'||b==='Champion'||a==='Runner-up'||b==='Runner-up';
- }).sort((a,b)=>Math.max(b.evaluation.sideA.outcomeBonus,b.evaluation.sideB.outcomeBonus)-Math.max(a.evaluation.sideA.outcomeBonus,a.evaluation.sideB.outcomeBonus)||Math.abs(b.evaluation.advantage)-Math.abs(a.evaluation.advantage)).slice(0,6);
  $('#trades').innerHTML=`${pageHero('Front Office','Trade Center','Every confirmed trade, retrospective outcome grade, GM profile and player journey in SDFF history.',[{k:'Confirmed Trades',v:all.length},{k:'Most Active',v:activityRows[0][0]},{k:'Most Traded Player',v:playerRows[0][0]},{k:'Busiest Season',v:busiestSeason[0]}])}<h2 style="display:none">Trades</h2><div class="subtitle">Every confirmed SDFF / Dlime Sickers trade, with searchable history, retrospective grades and front-office analytics.</div>
  <div class="trade-summary">
-  <div class="trade-card fade-card"><div class="k">Completed Trades</div><div class="v">${all.length}</div><div class="d">2021–2025</div></div>
-  <div class="trade-card fade-card"><div class="k">Most Active Trader</div><div class="v">${activityRows[0][0]}</div><div class="d">${activityRows[0][1]} trades</div></div>
   <div class="trade-card fade-card"><div class="k">Favorite Trade Pair</div><div class="v">${pairRows[0][1]}</div><div class="d">${pairRows[0][0].split('|||').join(' ↔ ')}</div></div>
-  <div class="trade-card fade-card"><div class="k">Busiest Season</div><div class="v">${busiestSeason[0]}</div><div class="d">${busiestSeason[1]} trades</div></div>
   <div class="trade-card fade-card"><div class="k">Average Deal Size</div><div class="v">${avgAssets.toFixed(1)}</div><div class="d">players exchanged</div></div>
-  <div class="trade-card fade-card"><div class="k">Most Traded Player</div><div class="v">${playerRows[0][0]}</div><div class="d">${playerRows[0][1]} appearances</div></div>
+  <div class="trade-card fade-card"><div class="k">Biggest Blockbuster</div><div class="v">${biggest.assetsA.length+biggest.assetsB.length}</div><div class="d">players · ${biggest.managerA} ↔ ${biggest.managerB}</div></div>
  </div>
  <div class="trade-grid2">
   <div class="panel"><h3>Most Active Traders</h3><div class="trade-bars">${activityRows.map(([m,n])=>`<div class="trade-bar"><div>${m}</div><div class="trade-track"><div class="trade-fill" style="width:${100*n/activityRows[0][1]}%"></div></div><b>${n}</b></div>`).join('')}</div></div>
   <div class="panel"><h3>Most Frequent Trade Partners</h3><div class="trade-bars">${pairRows.slice(0,10).map(([p,n])=>`<div class="trade-bar"><div>${p.split('|||').join(' ↔ ')}</div><div class="trade-track"><div class="trade-fill" style="width:${100*n/pairRows[0][1]}%"></div></div><b>${n}</b></div>`).join('')}</div></div>
- </div>
- <h3 class="trade-hof">Trade Hall of Fame</h3>
- <div class="award-grid">
-  ${award('📦','Biggest Blockbuster',`${biggest.managerA} ↔ ${biggest.managerB}`,`${biggest.assetsA.length+biggest.assetsB.length} players · ${biggest.date}`,`${biggest.assetsA.map(a=>a.name).join(', ')} for ${biggest.assetsB.map(a=>a.name).join(', ')}.`)}
-  ${award('🔁','Most Traded Player',playerRows[0][0],`${playerRows[0][1]} appearances`,`The player appearing most often across confirmed SDFF trades.`)}
-  ${award('☎️','Most Active Trader',activityRows[0][0],`${activityRows[0][1]} completed trades`,`No manager appeared in more accepted trade confirmations.`)}
-  ${award('🤝','Favorite Trade Partners',pairRows[0][0].split('|||').join(' & '),`${pairRows[0][1]} trades together`,`The most frequently repeated trading relationship in league history.`)}
  </div>
  <div class="trade-section-grid">
   <div class="panel trade-network-wrap"><div class="gm-profile-head"><div><h3>Interactive Trade Network</h3><div class="small">Larger circles indicate more trades. Thicker lines indicate more trades between two managers.</div></div><select id="networkManager"><option value="">All managers</option>${mgrs.map(m=>`<option>${m}</option>`).join('')}</select></div>${networkSvg}<div class="network-legend">Select or click a manager to isolate their trade relationships.</div></div>
@@ -1051,8 +1034,7 @@ function trades(){
   <div class="panel best-trader-panel"><div class="gm-profile-head"><div><h3>Best Trader Comparison</h3><div class="small">Compare managers using retrospective trade outcomes, win rate, average advantage and trade volume.</div></div><select id="traderMetric"><option value="gmScore">Overall GM Rating</option><option value="winRate">Trade Win Rate</option><option value="avg">Average Outcome Advantage</option><option value="volume">Trade Volume</option></select></div><div id="bestTraderSummary"></div><div id="bestTraderChart" class="best-trader-chart"></div></div>
   <div class="panel"><h3>Buy-Low / Sell-High Signals</h3><div class="trade-method">These are retrospective signals, not reconstructed market values. A signal counts when a manager won the outcome grade despite acquiring the lower estimated incoming player value, or converted outgoing value into a stronger incoming result.</div><div id="tradeSignals" class="signal-grid"></div></div>
  </div>
- <div class="panel"><h3>Championship Butterfly Effects</h3><div class="small">Trades involving a manager who later won, shared, or reached the championship in that season. This shows sequence and outcome, not proof of causation.</div><div class="butterfly-list">${champTrades.map(t=>{const aChamp=t.evaluation.sideA.outcomeLabel,bChamp=t.evaluation.sideB.outcomeLabel,focus=aChamp==='Champion'||aChamp==='Runner-up'?t.managerA:t.managerB,side=sideObj(t,focus),assets=received(t,focus).map(a=>a.name).join(', ');return `<div class="butterfly-card"><div class="butterfly-flow"><div class="butterfly-step"><b>${t.date}</b><br><span class="small">${focus} acquired ${assets}</span></div><div class="butterfly-arrow">→</div><div class="butterfly-step"><b>${side.postTrade.wins}-${side.postTrade.losses}</b><br><span class="small">post-trade record</span></div><div class="butterfly-arrow">→</div><div class="butterfly-step"><b>${side.outcomeLabel}</b><br><span class="small">${t.season} outcome · grade ${sideGrade(t,focus)}</span></div></div></div>`}).join('')}</div></div>
- <div class="panel"><h3>How the Grades Work</h3><div class="trade-method">Each side receives an outcome score built from three documented inputs: <b>estimated remaining-season player value</b> using ESPN season points and the share of the schedule remaining when the trade occurred; <b>the acquiring manager’s post-trade team performance</b>; and <b>playoff/championship outcome</b>. These are evidence-based retrospective grades, not claims about market value on the date of the trade. Historical team names are mapped to verified managers, including The Hill Has Eyez → Mike O. in 2024. Missing ESPN player records reduce the confidence level shown for that deal.</div></div>
+ <details class="panel trade-methodology"><summary><b>How the trade grades work</b></summary><div class="trade-method" style="margin-top:10px">Grades combine estimated remaining-season player production, post-trade team performance, and playoff or championship outcome. They are retrospective outcome grades, not reconstructed market values. Missing player records reduce confidence. Historical team names are mapped to verified managers, including The Hill Has Eyez → Mike O. in 2024.</div></details>
  <h3>Best and Worst Trade Outcomes <span class="rank-detail-hint">Click any trade to see the evidence</span></h3><div class="tablewrap"><table class="trade-rank-table"><thead><tr><th>#</th><th>Date</th><th>Trade</th><th>Grades</th><th>Advantage</th><th>Confidence</th></tr></thead><tbody>${best.map((t,i)=>{
   const e=t.evaluation,winner=e.advantage>=0?t.managerA:t.managerB,winnerSide=e.advantage>=0?'A':'B';
   const assetLine=a=>`${a.name}${a.position?` · ${a.position}`:''}${a.proTeam?` (${a.proTeam})`:''}${a.seasonPoints!=null?` · ${Number(a.seasonPoints).toFixed(1)} season pts`:' · scoring unavailable'}`;
