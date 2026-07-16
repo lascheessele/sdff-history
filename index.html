@@ -692,6 +692,80 @@ footer{padding-top:40px}
     margin-top:10px;
   }
 }
+
+/* ===== SDFF PREMIUM EXPERIENCE UPDATE ===== */
+.premium-hero{
+  position:relative;overflow:hidden;border:1px solid var(--line);border-radius:22px;
+  padding:34px;background:
+  radial-gradient(circle at 82% 10%,rgba(255,176,32,.18),transparent 28%),
+  radial-gradient(circle at 18% 110%,rgba(96,165,250,.14),transparent 35%),
+  linear-gradient(135deg,rgba(17,24,39,.98),rgba(8,13,22,.98));
+  box-shadow:0 22px 58px rgba(0,0,0,.28);margin-bottom:26px
+}
+.premium-hero .eyebrow{font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:1px;font-weight:900}
+.premium-hero h2{font-size:38px;line-height:1.04;letter-spacing:-1.1px;margin:8px 0 0}
+.premium-hero p{max-width:760px;color:var(--dim);line-height:1.7;margin:12px 0 0}
+.premium-hero .hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.premium-hero .hero-pill{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.045);border-radius:999px;padding:8px 12px;font-size:12px;font-weight:750}
+.premium-home-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:18px;margin:20px 0 28px}
+.premium-story{min-height:260px;display:flex;flex-direction:column;justify-content:flex-end}
+.premium-story .story-label{font-size:11px;color:var(--accent);text-transform:uppercase;font-weight:900;letter-spacing:.7px}
+.premium-story .story-title{font-size:29px;font-weight:950;line-height:1.08;letter-spacing:-.6px;margin-top:6px}
+.premium-story .story-copy{color:var(--dim);line-height:1.6;margin-top:9px}
+.premium-side{display:grid;gap:14px}
+.premium-quicklinks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0 30px}
+.premium-quicklinks button{
+  border:1px solid var(--line);background:linear-gradient(145deg,var(--panel2),var(--panel));
+  color:var(--txt);border-radius:14px;padding:16px 12px;text-align:left;cursor:pointer
+}
+.premium-quicklinks button b{display:block;font-size:14px}
+.premium-quicklinks button span{display:block;color:var(--dim);font-size:11px;margin-top:4px}
+.premium-quicklinks button:hover{border-color:var(--accent);transform:translateY(-3px)}
+.trophy-cabinet{display:flex;flex-wrap:wrap;gap:12px}
+.trophy-shelf{flex:1 1 190px;border:1px solid var(--line);background:linear-gradient(180deg,var(--panel2),var(--panel));border-radius:14px;padding:15px}
+.trophy-shelf .yr{color:var(--accent);font-weight:900;font-size:12px}
+.trophy-shelf .champ{font-weight:900;font-size:16px;margin-top:6px}
+.trophy-shelf .rings{font-size:21px;margin-top:8px}
+.museum-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.museum-card{border:1px solid var(--line);border-radius:16px;padding:17px;background:linear-gradient(145deg,rgba(24,34,52,.94),rgba(12,18,29,.96));min-height:160px}
+.museum-card .icon{font-size:25px}
+.museum-card .label{font-size:10px;text-transform:uppercase;color:var(--dim);font-weight:850;letter-spacing:.55px;margin-top:10px}
+.museum-card .title{font-size:18px;font-weight:950;margin-top:5px}
+.museum-card .copy{font-size:12px;color:var(--dim);line-height:1.5;margin-top:6px}
+.page-signature{margin-bottom:22px}
+.page-signature.records{--sig:#ffd166}
+.page-signature.luck{--sig:#60a5fa}
+.page-signature.superlatives{--sig:#c084fc}
+.page-signature.wacky{--sig:#34d399}
+.page-signature.matchups{--sig:#fb7185}
+.page-signature.managers{--sig:#f59e0b}
+.page-signature.seasons{--sig:#38bdf8}
+.page-signature.trades{--sig:#22c55e}
+.page-signature.h2h{--sig:#f97316}
+.page-signature.alltime{--sig:#eab308}
+.page-signature{
+  border-left:5px solid var(--sig,var(--accent));padding:18px 20px;border-radius:0 14px 14px 0;
+  background:linear-gradient(90deg,color-mix(in srgb,var(--sig,var(--accent)) 12%,transparent),transparent 70%),var(--panel);
+  border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)
+}
+.page-signature .k{font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:var(--sig,var(--accent));font-weight:900}
+.page-signature .t{font-size:25px;font-weight:950;margin-top:4px}
+.page-signature .d{color:var(--dim);font-size:13px;line-height:1.55;margin-top:6px;max-width:760px}
+.glass-card{background:linear-gradient(145deg,rgba(24,34,52,.87),rgba(12,18,29,.87));backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.08)}
+@media(max-width:900px){
+ .premium-home-grid{grid-template-columns:1fr}
+ .premium-quicklinks{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .museum-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:620px){
+ .premium-hero{padding:22px;border-radius:16px}
+ .premium-hero h2{font-size:29px}
+ .premium-quicklinks{grid-template-columns:1fr 1fr}
+ .museum-grid{grid-template-columns:1fr}
+ .premium-story{min-height:220px}
+ .premium-story .story-title{font-size:24px}
+ .page-signature .t{font-size:21px}
+}
 </style></head><body><div class="shell"><header><div class="eyebrow">ESPN League 338168554 · Established 2021</div><h1>🏈 SDFF League History</h1><div class="sub">ESPN league history · 2021–2025 completed seasons</div><div class="header-pills"><span>🏆 Championships</span><span>📊 Career Stats</span><span>⚔️ Head-to-Head</span><span>🎲 Wacky Stats</span></div></header><nav id="nav"></nav>
 <div class="mobile-page-select-wrap">
   <select id="mobilePageSelect" class="mobile-page-select" aria-label="Choose dashboard page"></select>
@@ -711,6 +785,9 @@ function managerColor(name){
 }
 function managerChip(name){
  return `<span class="manager-chip"><span class="manager-dot" style="background:${managerColor(name)}"></span>${name}</span>`;
+}
+function pageSignature(kind,kicker,title,description){
+ return `<div class="page-signature ${kind}"><div class="k">${kicker}</div><div class="t">${title}</div><div class="d">${description}</div></div>`;
 }
 function pageHero(eyebrow,title,dek,stats=[]){
  return `<div class="page-hero fade-card"><div class="eyebrow">${eyebrow}</div><div class="title">${title}</div><div class="dek">${dek}</div>${stats.length?`<div class="hero-stats">${stats.map(s=>`<div class="hero-stat"><div class="k">${s.k}</div><div class="v">${s.v}</div></div>`).join('')}</div>`:''}</div>`;
@@ -736,9 +813,58 @@ function escAttr(v){return String(v??'').replaceAll('&','&amp;').replaceAll('\"'
 function award(i,t,w,d,more=''){return `<div class="award ${more?'clickable':''}" ${more?`data-icon="${escAttr(i)}" data-title="${escAttr(t)}" data-who="${escAttr(w)}" data-detail="${escAttr(d)}" data-more="${escAttr(more)}"`:''}><div class="icon">${i}</div><div class="lbl">${t}</div><div class="who">${w}</div><div class="det">${d}</div>${more?'<div class="more">View details</div>':''}</div>`}
 function initAwardModal(){const m=$('#awardModal');document.addEventListener('click',e=>{const a=e.target.closest('.award.clickable');if(a){$('#modalBody').innerHTML=`<div class="modal-icon">${a.dataset.icon}</div><h2>${a.dataset.title}</h2><div class="modal-who">${a.dataset.who}</div><div class="modal-detail"><b>${a.dataset.detail}</b><br><br>${a.dataset.more}</div>`;m.classList.add('on')}if(e.target===m||e.target.closest('.modal-close'))m.classList.remove('on')});document.addEventListener('keydown',e=>{if(e.key==='Escape')m.classList.remove('on')})}
 function bars(el,rows,name,val){let max=Math.max(...rows.map(r=>Math.abs(r[val])),1);el.innerHTML=rows.map(r=>`<div class="barrow"><div>${r[name]}</div><div class="track"><div class="fill" style="width:${100*Math.abs(r[val])/max}%"></div></div><div>${fmt(r[val],1)}</div></div>`).join('')}
-function initNav(){const tabs=[['overview','Overview'],['managers','Managers'],['standings','All-Time'],['seasons','Seasons'],['h2h','Head-to-Head'],['trades','Trades'],['records','Records'],['luck','Luck & Efficiency'],['superlatives','Superlatives'],['wacky','Wacky Stats'],['matchups','Matchups']];$('#nav').innerHTML=tabs.map((x,i)=>`<button data-id="${x[0]}" class="${i?'':'on'}">${x[1]}</button>`).join('');$('#app').innerHTML=tabs.map((x,i)=>`<section id="${x[0]}" class="section ${i?'':'on'}"></section>`).join('');$('#nav').onclick=e=>{if(!e.target.dataset.id)return;$$('nav button,.section').forEach(x=>x.classList.remove('on'));e.target.classList.add('on');$('#'+e.target.dataset.id).classList.add('on');history.replaceState(null,'','#'+e.target.dataset.id);window.scrollTo({top:0,behavior:'smooth'})};const requested=location.hash.slice(1);if(requested&&$('#'+requested)){const b=document.querySelector('nav button[data-id="'+requested+'"]');if(b)b.click()}}
-function overview(){const done=D.seasons,goat=D.managers[0],titleKing=[...D.managers].sort((a,b)=>b.titles-a.titles||b.legacy-a.legacy)[0];$('#overview').innerHTML=`<div class="hero-intro panel"><div><div class="kicker">WELCOME TO THE ARCHIVE</div><div class="hero-title">Five completed seasons of SDFF history.</div><div class="hero-copy">Championships, rivalries, records, luck and the moments the league still talks about.</div></div><div class="hero-stamp">2021<br>—<br>2025</div></div><div class="cards"><div class="card fade-card"><div class="lbl">Completed Seasons</div><div class="big">${done.length}</div><div class="note">2021–2025 only</div></div><div class="card fade-card"><div class="lbl">Managers Recorded</div><div class="big">${D.managers.length}</div><div class="note">Across the full league archive</div></div><div class="card fade-card"><div class="lbl">Current GOAT</div><div class="big">${goat.manager}</div><div class="note">Legacy Score ${goat.legacy}</div></div><div class="card fade-card"><div class="lbl">Most Championships</div><div class="big">${titleKing.titles}</div><div class="note">${titleKing.manager}</div></div></div><h3>Championship Timeline</h3><div class="timeline">${done.map(s=>{const cs=s.coChampions||[s.champion];return `<div class="panel champ-card"><div class="year">${s.year}</div><div class="who">🏆 ${cs.map(c=>c.manager).join(' & ')}</div><div class="team">${cs.map(c=>c.team).join(' / ')}${s.championshipNote?'<br><span class="small">Shared championship</span>':''}</div></div>`}).join('')}</div><h3>League Lore</h3><div class="lore-list"><div class="lore-item"><div class="yr">2021</div><div class="ttl">The First Champion</div><div class="copy">Alex Sabol and Angry Donuts won the inaugural recorded SDFF championship.</div></div><div class="lore-item"><div class="yr">2022</div><div class="ttl">The Shared Title</div><div class="copy">Luke Scheessele and Brad Freiburger were recognized as co-champions following the canceled Bills–Bengals game after Damar Hamlin’s medical emergency.</div></div><div class="lore-item"><div class="yr">2023</div><div class="ttl">Luke Breaks Through</div><div class="copy">Campbell's Crackheads captured Luke’s second credited title and first outright championship.</div></div><div class="lore-item"><div class="yr">2024–2025</div><div class="ttl">Repeat Champions Return</div><div class="copy">Brad won again in 2024, followed by Alex’s second championship in 2025.</div></div></div><h3>League Leaders</h3><div class="award-grid">${award('👑','Legacy Leader',goat.manager,'Score '+goat.legacy)}${award('🔥','Best Career Win %',[...D.managers].sort((a,b)=>b.winPct-a.winPct)[0].manager,pct([...D.managers].sort((a,b)=>b.winPct-a.winPct)[0].winPct))}${award('🍀','Most Wins Above Expected',[...D.managers].sort((a,b)=>b.luck-a.luck)[0].manager,'+'+fmt([...D.managers].sort((a,b)=>b.luck-a.luck)[0].luck,1))}${award('😭','Most Wins Below Expected',[...D.managers].sort((a,b)=>a.luck-b.luck)[0].manager,fmt([...D.managers].sort((a,b)=>a.luck-b.luck)[0].luck,1))}</div><h3>Legacy Rankings</h3><div id="legacyBars" class="panel"></div>`;bars($('#legacyBars'),D.managers.slice(0,10),'manager','legacy')}
-function managers(){let names=D.managers.map(x=>x.manager).sort();$('#managers').innerHTML=`<div class="ctrls"><select class="profile-select" id="profileSel">${names.map(n=>`<option>${n}</option>`).join('')}</select></div><div id="profile"></div>`;$('#profileSel').onchange=renderProfile;renderProfile()}
+function initNav(){const tabs=[['overview','Overview'],['managers','Managers'],['standings','All-Time'],['seasons','Seasons'],['h2h','Head-to-Head'],['trades','Trades'],['museum','Museum'],['records','Records'],['luck','Luck & Efficiency'],['superlatives','Superlatives'],['wacky','Wacky Stats'],['matchups','Matchups']];$('#nav').innerHTML=tabs.map((x,i)=>`<button data-id="${x[0]}" class="${i?'':'on'}">${x[1]}</button>`).join('');$('#app').innerHTML=tabs.map((x,i)=>`<section id="${x[0]}" class="section ${i?'':'on'}"></section>`).join('');$('#nav').onclick=e=>{if(!e.target.dataset.id)return;$$('nav button,.section').forEach(x=>x.classList.remove('on'));e.target.classList.add('on');$('#'+e.target.dataset.id).classList.add('on');history.replaceState(null,'','#'+e.target.dataset.id);window.scrollTo({top:0,behavior:'smooth'})};const requested=location.hash.slice(1);if(requested&&$('#'+requested)){const b=document.querySelector('nav button[data-id="'+requested+'"]');if(b)b.click()}}
+function overview(){
+ const done=D.seasons,goat=D.managers[0],titleKing=[...D.managers].sort((a,b)=>b.titles-a.titles||b.legacy-a.legacy)[0];
+ const latest=[...done].sort((a,b)=>b.year-a.year)[0];
+ const latestChamps=(latest.coChampions||[latest.champion]).map(c=>c.manager).join(' & ');
+ const topTrade=[...TRADES].sort((a,b)=>Math.abs(b.evaluation.advantage)-Math.abs(a.evaluation.advantage))[0];
+ const factPool=[
+  `${TRADES.length} confirmed trades are documented in the archive.`,
+  `${goat.manager} currently leads the all-time Legacy Score rankings.`,
+  `${titleKing.manager} owns ${titleKing.titles} credited championship${titleKing.titles===1?'':'s'}.`,
+  `${D.games.filter(g=>g.winner!='UNDECIDED').length} completed matchups are preserved.`,
+  `${[...new Set(TRADES.flatMap(t=>[...t.assetsA,...t.assetsB].map(a=>a.name)))].length} unique players appear in confirmed trades.`
+ ];
+ const fact=factPool[(new Date().getDate()+new Date().getMonth())%factPool.length];
+ $('#overview').innerHTML=`
+ <div class="premium-hero">
+  <div class="eyebrow">SDFF Hall of Fame & Archive</div>
+  <h2>Every season. Every rivalry. Every story preserved.</h2>
+  <p>Five completed seasons of league history, rebuilt as a living archive of championships, trades, records, luck, and the moments everyone still argues about.</p>
+  <div class="hero-meta">
+   <div class="hero-pill">${done.length} completed seasons</div>
+   <div class="hero-pill">${D.managers.length} managers recorded</div>
+   <div class="hero-pill">${TRADES.length} confirmed trades</div>
+   <div class="hero-pill">2021–2025</div>
+  </div>
+ </div>
+ <div class="premium-quicklinks">
+  <button data-jump="managers"><b>Franchises</b><span>Career résumés and identities</span></button>
+  <button data-jump="trades"><b>Trade Center</b><span>Grades, networks, and GM rankings</span></button>
+  <button data-jump="seasons"><b>Season Rewinds</b><span>Year-by-year league history</span></button>
+  <button data-jump="museum"><b>SDFF Museum</b><span>Milestones, lore, and iconic moments</span></button>
+ </div>
+ <div class="premium-home-grid">
+  <div class="premium-hero premium-story">
+   <div class="story-label">Defending Champion</div>
+   <div class="story-title">${latestChamps}</div>
+   <div class="story-copy">${latest.year} is the most recent completed season in the archive. Open the Season Rewind for final standings, weekly extremes, luck, and postseason context.</div>
+  </div>
+  <div class="premium-side">
+   <div class="story-card glass-card"><div class="label">This Visit's SDFF Fact</div><div class="headline">${fact}</div><div class="copy">The homepage rotates through verified league-history facts.</div></div>
+   <div class="story-card glass-card"><div class="label">Featured Trade Outcome</div><div class="headline">${topTrade.managerA} ↔ ${topTrade.managerB}</div><div class="copy">${topTrade.date} · ${Math.abs(topTrade.evaluation.advantage).toFixed(1)} outcome advantage · ${topTrade.evaluation.confidence} confidence.</div></div>
+  </div>
+ </div>
+ <h3>Championship Cabinet</h3>
+ <div class="trophy-cabinet">${done.map(s=>{const cs=s.coChampions||[s.champion];return `<div class="trophy-shelf"><div class="yr">${s.year}</div><div class="champ">${cs.map(c=>c.manager).join(' & ')}</div><div class="rings">${s.coChampions?'🏆🏆':'🏆'}</div><div class="small">${cs.map(c=>c.team).join(' / ')}</div></div>`}).join('')}</div>
+ <h3>Legacy Leaders</h3>
+ <div class="award-grid">${award('👑','Legacy Leader',goat.manager,'Score '+goat.legacy)}${award('🔥','Best Career Win %',[...D.managers].sort((a,b)=>b.winPct-a.winPct)[0].manager,pct([...D.managers].sort((a,b)=>b.winPct-a.winPct)[0].winPct))}${award('🍀','Most Wins Above Expected',[...D.managers].sort((a,b)=>b.luck-a.luck)[0].manager,'+'+fmt([...D.managers].sort((a,b)=>b.luck-a.luck)[0].luck,1))}${award('😭','Most Wins Below Expected',[...D.managers].sort((a,b)=>a.luck-b.luck)[0].manager,fmt([...D.managers].sort((a,b)=>a.luck-b.luck)[0].luck,1))}</div>
+ <h3>League Timeline</h3>
+ <div class="panel"><div class="timeline-rail">${done.map(s=>{const cs=s.coChampions||[s.champion];return `<div class="timeline-event"><div class="yr">${s.year}</div><div class="evt">${cs.map(c=>c.manager).join(' & ')}</div><div class="desc">${cs.map(c=>c.team).join(' / ')}${s.championshipNote?' · shared championship':''}</div></div>`}).join('')}</div></div>`;
+ document.querySelectorAll('[data-jump]').forEach(b=>b.addEventListener('click',()=>document.querySelector(`nav button[data-id="${b.dataset.jump}"]`)?.click()));
+}
+function managers(){let names=D.managers.map(x=>x.manager).sort();$('#managers').innerHTML=`${pageSignature('managers','Franchise Profiles','Managers','Career résumés, championship rings, rivalries, trade history, and the identity of every SDFF franchise.')}<div class="ctrls"><select class="profile-select" id="profileSel">${names.map(n=>`<option>${n}</option>`).join('')}</select></div><div id="profile"></div>`;$('#profileSel').onchange=renderProfile;renderProfile()}
 function renderProfile(){let m=D.managers.find(x=>x.manager==$('#profileSel').value),ss=D.teams.filter(x=>x.manager==m.manager).sort((a,b)=>a.year-b.year),best=[...ss].sort((a,b)=>a.finish-b.finish||b.pf-a.pf)[0],worst=[...ss].sort((a,b)=>b.finish-a.finish||a.pf-b.pf)[0],mg=D.games.filter(g=>g.homeMgr==m.manager||g.awayMgr==m.manager).filter(g=>g.winner!='UNDECIDED'),playoff=mg.filter(g=>!g.regular),pw=0,pl=0;playoff.forEach(g=>{let w=g.winner=='HOME'?g.homeMgr:g.awayMgr;if(w==m.manager)pw++;else pl++});let scores=[];mg.forEach(g=>scores.push({year:g.year,week:g.week,score:g.homeMgr==m.manager?g.homeScore:g.awayScore,opp:g.homeMgr==m.manager?g.awayMgr:g.homeMgr}));let hi=[...scores].sort((a,b)=>b.score-a.score)[0],lo=[...scores].sort((a,b)=>a.score-b.score)[0],rivals=D.managers.filter(x=>x.manager!=m.manager).map(x=>{let gs=pairGames(m.manager,x.manager),w=0,l=0;gs.forEach(g=>{let win=g.winner=='HOME'?g.homeMgr:g.awayMgr;if(win==m.manager)w++;else if(win==x.manager)l++});return {name:x.manager,games:gs.length,w,l}}).sort((a,b)=>b.games-a.games||Math.abs(a.w-a.l)-Math.abs(b.w-b.l)),rival=rivals[0],teamNames=[...new Set([
  ...ss.map(x=>x.team),
  ...TRADES.flatMap(t=>{
@@ -749,10 +875,10 @@ function renderProfile(){let m=D.managers.find(x=>x.manager==$('#profileSel').va
  })
 ])];$('#profile').innerHTML=`<div class="panel"><div class="profile-head"><div><div class="profile-name" style="color:${managerColor(m.manager)}">${m.manager}</div><div class="ring-row">${'💍'.repeat(m.titles)||'<span class="small">No championships</span>'}</div></div></div><div class="profile-grid"><div class="profile-metric"><div class="k">Career Record</div><div class="v">${m.wins}-${m.losses}-${m.ties}</div><div class="d">${pct(m.winPct)} win rate</div></div><div class="profile-metric"><div class="k">Playoff Record</div><div class="v">${pw}-${pl}</div><div class="d">${playoff.length} postseason games</div></div><div class="profile-metric"><div class="k">Best Season</div><div class="v">${best.year}</div><div class="d">Finished #${best.finish} · ${best.wins}-${best.losses}</div></div><div class="profile-metric"><div class="k">Primary Rival</div><div class="v">${rival?rival.name:'—'}</div><div class="d">${rival?`${rival.games} meetings · ${rival.w}-${rival.l}`:'No meetings'}</div></div><div class="profile-metric"><div class="k">Highest Score</div><div class="v">${hi?fmt(hi.score,2):'—'}</div><div class="d">${hi?`${hi.year} Week ${hi.week} vs ${hi.opp}`:''}</div></div><div class="profile-metric"><div class="k">Lowest Score</div><div class="v">${lo?fmt(lo.score,2):'—'}</div><div class="d">${lo?`${lo.year} Week ${lo.week} vs ${lo.opp}`:''}</div></div><div class="profile-metric"><div class="k">Average Finish</div><div class="v">${fmt(m.avgFinish,1)}</div><div class="d">${m.playoffs} playoff appearances</div></div><div class="profile-metric"><div class="k">Luck Index</div><div class="v ${m.luck>=0?'pos':'neg'}">${m.luck>0?'+':''}${fmt(m.luck,1)}</div><div class="d">wins vs expected</div></div></div><div class="small"><b>Team names:</b> ${teamNames.join(' · ')}</div>
 ${m.manager==='Mike O.'?'<div class="small" style="margin-top:8px"><b>Verified 2024 rename:</b> The Hill Has Eyez later appeared in ESPN season data as Tony\'s Little (AR) Friend.</div>':''}</div><h3>Season-by-Season Résumé</h3><div id="profileTable"></div>`;table($('#profileTable'),[['Year',r=>r.year],['Team',r=>r.team],['Record',r=>`${r.wins}-${r.losses}`],['PF',r=>fmt(r.pf,1)],['Finish',r=>r.finish],['All-Play',r=>pct(r.allPlayPct)],['Luck',r=>`<span class="${r.luck>=0?'pos':'neg'}">${r.luck>0?'+':''}${fmt(r.luck,1)}</span>`]],ss)}
-function standings(){let rows=[...D.managers];$('#standings').innerHTML=`<h2>All-Time Table</h2><div class="subtitle">The official answer to arguments nobody will ever concede.</div><div id="alltime"></div>`;table($('#alltime'),[['Rank',r=>`<span class="rank">#${rows.indexOf(r)+1}</span>`],['Manager',r=>`<b>${r.manager}</b>`],['Record',r=>`${r.wins}-${r.losses}-${r.ties}`],['Win %',r=>pct(r.winPct)],['Titles',r=>`<span class="gold">${'🏆'.repeat(r.titles)||'—'}</span>`],['Runner-Up',r=>r.runnerUps],['Playoffs',r=>r.playoffs],['Avg Finish',r=>fmt(r.avgFinish,1)],['Legacy',r=>`<b>${fmt(r.legacy,1)}</b>`]],rows)}
-function seasons(){const years=D.seasons.map(s=>s.year).sort((a,b)=>b-a),latest=years[0];$('#seasons').innerHTML=`<div class="ctrls"><select id="seasonSel">${years.map(y=>`<option value="${y}"${y===latest?' selected':''}>${y}</option>`).join('')}</select></div><div id="seasonHead"></div><div id="seasonTable"></div>`;$('#seasonSel').onchange=renderSeason;renderSeason()}
+function standings(){let rows=[...D.managers];$('#standings').innerHTML=`${pageSignature('alltime','Hall of Fame Rankings','All-Time Table','The official career leaderboard for wins, points, championships, consistency, and legacy.')}<h2 style="display:none">All-Time Table</h2><div class="subtitle">The official answer to arguments nobody will ever concede.</div><div id="alltime"></div>`;table($('#alltime'),[['Rank',r=>`<span class="rank">#${rows.indexOf(r)+1}</span>`],['Manager',r=>`<b>${r.manager}</b>`],['Record',r=>`${r.wins}-${r.losses}-${r.ties}`],['Win %',r=>pct(r.winPct)],['Titles',r=>`<span class="gold">${'🏆'.repeat(r.titles)||'—'}</span>`],['Runner-Up',r=>r.runnerUps],['Playoffs',r=>r.playoffs],['Avg Finish',r=>fmt(r.avgFinish,1)],['Legacy',r=>`<b>${fmt(r.legacy,1)}</b>`]],rows)}
+function seasons(){const years=D.seasons.map(s=>s.year).sort((a,b)=>b-a),latest=years[0];$('#seasons').innerHTML=`${pageSignature('seasons','Annual Archive','Season Rewinds','Open each completed season like a chapter in league history, with standings, records, luck, and defining moments.')}<div class="ctrls"><select id="seasonSel">${years.map(y=>`<option value="${y}"${y===latest?' selected':''}>${y}</option>`).join('')}</select></div><div id="seasonHead"></div><div id="seasonTable"></div>`;$('#seasonSel').onchange=renderSeason;renderSeason()}
 function renderSeason(){let y=+$('#seasonSel').value,s=D.seasons.find(x=>x.year==y),rows=D.teams.filter(x=>x.year==y).sort((a,b)=>a.finish-b.finish),pf=[...rows].sort((a,b)=>b.pf-a.pf)[0],luckiest=[...rows].sort((a,b)=>b.luck-a.luck)[0],unluckiest=[...rows].sort((a,b)=>a.luck-b.luck)[0],sg=D.games.filter(g=>g.year==y&&g.winner!='UNDECIDED'),reg=sg.filter(g=>g.regular),allScores=[];reg.forEach(g=>{allScores.push({manager:g.homeMgr,score:g.homeScore,week:g.week,opp:g.awayMgr});allScores.push({manager:g.awayMgr,score:g.awayScore,week:g.week,opp:g.homeMgr})});let high=[...allScores].sort((a,b)=>b.score-a.score)[0],low=[...allScores].sort((a,b)=>a.score-b.score)[0],close=[...reg].sort((a,b)=>Math.abs(a.homeScore-a.awayScore)-Math.abs(b.homeScore-b.awayScore))[0],blow=[...reg].sort((a,b)=>Math.abs(b.homeScore-b.awayScore)-Math.abs(a.homeScore-a.awayScore))[0];$('#seasonHead').innerHTML=`<div class="cards"><div class="card fade-card"><div class="lbl">Season</div><div class="big">${s.name}</div><div class="note">${s.teams} teams · ${s.regWeeks} regular-season weeks</div></div><div class="card fade-card"><div class="lbl">${s.coChampions?'Co-Champions':'Champion'}</div><div class="big">${(s.coChampions||[s.champion]).map(c=>c.manager).join(' & ')}</div><div class="note">${(s.coChampions||[s.champion]).map(c=>c.team).join(' / ')}${s.championshipNote?'<br>Shared after the canceled Bills–Bengals game.':''}</div></div><div class="card fade-card"><div class="lbl">Points Leader</div><div class="big">${pf.manager}</div><div class="note">${fmt(pf.pf,1)} PF</div></div></div><h3>Season Snapshot</h3><div class="season-awards"><div class="profile-metric"><div class="k">Highest Week</div><div class="v">${high?fmt(high.score,2):'—'}</div><div class="d">${high?`${high.manager} · Week ${high.week}`:''}</div></div><div class="profile-metric"><div class="k">Lowest Week</div><div class="v">${low?fmt(low.score,2):'—'}</div><div class="d">${low?`${low.manager} · Week ${low.week}`:''}</div></div><div class="profile-metric"><div class="k">Luckiest Record</div><div class="v">${luckiest.manager}</div><div class="d">${luckiest.luck>0?'+':''}${fmt(luckiest.luck,1)} wins vs expected</div></div><div class="profile-metric"><div class="k">Unluckiest Record</div><div class="v">${unluckiest.manager}</div><div class="d">${fmt(unluckiest.luck,1)} wins vs expected</div></div><div class="profile-metric"><div class="k">Closest Game</div><div class="v">${close?fmt(Math.abs(close.homeScore-close.awayScore),2):'—'}</div><div class="d">${close?`Week ${close.week}: ${close.homeMgr} vs ${close.awayMgr}`:''}</div></div><div class="profile-metric"><div class="k">Biggest Blowout</div><div class="v">${blow?fmt(Math.abs(blow.homeScore-blow.awayScore),2):'—'}</div><div class="d">${blow?`Week ${blow.week}: ${blow.homeMgr} vs ${blow.awayMgr}`:''}</div></div><div class="profile-metric"><div class="k">Best All-Play Team</div><div class="v">${[...rows].sort((a,b)=>b.allPlayPct-a.allPlayPct)[0].manager}</div><div class="d">${pct([...rows].sort((a,b)=>b.allPlayPct-a.allPlayPct)[0].allPlayPct)}</div></div><div class="profile-metric"><div class="k">Regular-Season Leader</div><div class="v">${[...rows].sort((a,b)=>b.wins-a.wins||b.pf-a.pf)[0].manager}</div><div class="d">${[...rows].sort((a,b)=>b.wins-a.wins||b.pf-a.pf)[0].wins}-${[...rows].sort((a,b)=>b.wins-a.wins||b.pf-a.pf)[0].losses}</div></div></div><h3>Final Standings</h3>`;table($('#seasonTable'),[['Finish',r=>r.finish],['Manager',r=>r.manager],['Team',r=>r.team],['Record',r=>`${r.wins}-${r.losses}`],['PF',r=>fmt(r.pf)],['PA',r=>fmt(r.pa)],['All-Play',r=>pct(r.allPlayPct)],['Expected W',r=>fmt(r.expectedWins,1)],['Luck',r=>`<span class="${r.luck>=0?'pos':'neg'}">${r.luck>0?'+':''}${fmt(r.luck,1)}</span>`]],rows)}
-function h2h(){let names=D.managers.map(x=>x.manager).sort();$('#h2h').innerHTML=`<div class="ctrls"><select id="h2hA">${names.map(n=>`<option>${n}</option>`).join('')}</select><select id="h2hB">${names.map(n=>`<option>${n}</option>`).join('')}</select></div><div id="h2hCards"></div><h3>All-Time Rivalry Matrix</h3><div id="matrix" class="h2h-grid"></div>`;$('#h2hB').selectedIndex=1;$('#h2hA').onchange=$('#h2hB').onchange=renderH2H;renderH2H();renderMatrix()}
+function h2h(){let names=D.managers.map(x=>x.manager).sort();$('#h2h').innerHTML=`${pageSignature('h2h','Rivalry Center','Head-to-Head','Compare any two managers across regular-season meetings, playoff clashes, margins, streaks, and bragging rights.')}<div class="ctrls"><select id="h2hA">${names.map(n=>`<option>${n}</option>`).join('')}</select><select id="h2hB">${names.map(n=>`<option>${n}</option>`).join('')}</select></div><div id="h2hCards"></div><h3>All-Time Rivalry Matrix</h3><div id="matrix" class="h2h-grid"></div>`;$('#h2hB').selectedIndex=1;$('#h2hA').onchange=$('#h2hB').onchange=renderH2H;renderH2H();renderMatrix()}
 function pairGames(a,b){return D.games.filter(g=>(g.homeMgr==a&&g.awayMgr==b)||(g.homeMgr==b&&g.awayMgr==a)).filter(g=>g.winner!='UNDECIDED')}
 function renderH2H(){let a=$('#h2hA').value,b=$('#h2hB').value,gs=pairGames(a,b),aw=0,bw=0,ap=0,bp=0;gs.forEach(g=>{let ah=g.homeMgr==a;ap+=ah?g.homeScore:g.awayScore;bp+=ah?g.awayScore:g.homeScore;let win=g.winner=='HOME'?g.homeMgr:g.awayMgr;if(win==a)aw++;if(win==b)bw++});$('#h2hCards').innerHTML=a==b?'<div class="panel">Select two different managers.</div>':`<div class="cards"><div class="card fade-card"><div class="lbl">Series Leader</div><div class="big">${aw==bw?'Dead Even':aw>bw?a:b}</div><div class="note">${aw}-${bw}</div></div><div class="card fade-card"><div class="lbl">Meetings</div><div class="big">${gs.length}</div><div class="note">Documented grudges</div></div><div class="card fade-card"><div class="lbl">Total Points</div><div class="big">${fmt(ap,1)}–${fmt(bp,1)}</div><div class="note">${a} vs ${b}</div></div><div class="card fade-card"><div class="lbl">Avg Margin</div><div class="big">${gs.length?fmt(Math.abs(ap-bp)/gs.length,1):'0.0'}</div><div class="note">points per meeting</div></div></div>`}
 function renderMatrix(){let ns=D.managers.map(x=>x.manager).sort(),html='<table><thead><tr><th>Manager</th>'+ns.map(n=>`<th>${n.split(' ')[0]}</th>`).join('')+'</tr></thead><tbody>';for(let a of ns){html+=`<tr><td><b>${a}</b></td>`;for(let b of ns){if(a==b){html+='<td>—</td>';continue}let gs=pairGames(a,b),w=0,l=0;gs.forEach(g=>{let win=g.winner=='HOME'?g.homeMgr:g.awayMgr;if(win==a)w++;if(win==b)l++});html+=`<td>${w}-${l}</td>`}html+='</tr>'}html+='</tbody></table>';$('#matrix').innerHTML=html}
@@ -941,8 +1067,33 @@ function trades(){
  $('#tradeYear').onchange=render;$('#tradeManager').onchange=render;$('#tradeSearch').oninput=render;render();
  document.querySelectorAll('.trade-rank-row').forEach(row=>{const toggle=()=>{const id=row.dataset.rank,detail=document.querySelector(`[data-rank-detail="${id}"]`),open=!row.classList.contains('open');row.classList.toggle('open',open);detail.classList.toggle('open',open);row.setAttribute('aria-expanded',String(open))};row.addEventListener('click',toggle);row.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();toggle()}})});
 }
-function records(){let r=D.records,b=r.blowout,c=r.closest;$('#records').innerHTML=`<div class="award-grid">${award('🚀','Highest Weekly Score',r.high.manager,`${fmt(r.high.score,2)} · ${r.high.year} Week ${r.high.week}`)}${award('🧊','Lowest Weekly Score',r.low.manager,`${fmt(r.low.score,2)} · ${r.low.year} Week ${r.low.week}`)}${award('💥','Biggest Beatdown',b.homeScore>b.awayScore?b.homeMgr:b.awayMgr,`${fmt(Math.abs(b.homeScore-b.awayScore),2)}-point margin · ${b.year} Week ${b.week}`)}${award('📏','Photo Finish',c.homeScore>c.awayScore?c.homeMgr:c.awayMgr,`${fmt(Math.abs(c.homeScore-c.awayScore),2)}-point margin · ${c.year} Week ${c.week}`)}</div><h3>Top Single-Season Performances</h3><div id="seasonRecords"></div>`;let rows=[...D.teams].sort((a,b)=>b.pf-a.pf).slice(0,15);table($('#seasonRecords'),[['Manager',r=>r.manager],['Season',r=>r.year],['Team',r=>r.team],['Record',r=>`${r.wins}-${r.losses}`],['Points For',r=>fmt(r.pf,1)],['Finish',r=>r.finish]],rows)}
-function luck(){let rows=[...D.managers].sort((a,b)=>b.luck-a.luck),allplay=[...D.teams].sort((a,b)=>b.allPlayPct-a.allPlayPct).slice(0,15);$('#luck').innerHTML=`<div class="grid2"><div><h2>Career Luck Index</h2><div class="panel" id="luckBars"></div></div><div><h2>Translation for Normal People</h2><div class="panel"><p><b>Expected wins</b> measure how often your weekly score would have beaten the rest of the league.</p><p><b>Positive luck</b> means your schedule helped. Your schedule was more favorable than your weekly scoring would suggest.</p><p><b>Negative luck</b> means you scored well and still lost. Your schedule was less favorable than your weekly scoring would suggest.</p></div></div></div><h3>Best All-Play Seasons</h3><div id="allplayTable"></div>`;let max=Math.max(...rows.map(x=>Math.abs(x.luck)),1);$('#luckBars').innerHTML=rows.map(r=>`<div class="barrow"><div>${r.manager}</div><div class="track"><div class="fill" style="width:${100*Math.abs(r.luck)/max}%"></div></div><div class="${r.luck>=0?'pos':'neg'}">${r.luck>0?'+':''}${fmt(r.luck,1)}</div></div>`).join('');table($('#allplayTable'),[['Manager',r=>r.manager],['Season',r=>r.year],['Record',r=>`${r.wins}-${r.losses}`],['All-Play %',r=>pct(r.allPlayPct)],['Expected Wins',r=>fmt(r.expectedWins,1)],['Actual Wins',r=>r.wins],['Luck',r=>`<span class="${r.luck>=0?'pos':'neg'}">${r.luck>0?'+':''}${fmt(r.luck,1)}</span>`]],allplay)}
+function museum(){
+ const r=D.records;
+ const biggest=[...TRADES].sort((a,b)=>(b.assetsA.length+b.assetsB.length)-(a.assetsA.length+a.assetsB.length))[0];
+ const playerCounts={};TRADES.forEach(t=>[...t.assetsA,...t.assetsB].forEach(a=>playerCounts[a.name]=(playerCounts[a.name]||0)+1));
+ const mostTraded=Object.entries(playerCounts).sort((a,b)=>b[1]-a[1])[0];
+ const closest=r.closest,blow=r.blowout;
+ const closeWinner=closest.homeScore>closest.awayScore?closest.homeMgr:closest.awayMgr;
+ const blowWinner=blow.homeScore>blow.awayScore?blow.homeMgr:blow.awayMgr;
+ $('#museum').innerHTML=`
+ ${pageSignature('superlatives','SDFF Hall of Fame','The SDFF Museum','A curated collection of the league’s firsts, milestones, iconic performances, team-name history, and moments that deserve permanent display.')}
+ <div class="museum-grid">
+  <div class="museum-card"><div class="icon">🏆</div><div class="label">The First Champion</div><div class="title">Alex Sabol · 2021</div><div class="copy">Angry Donuts captured the first championship preserved in the official SDFF archive.</div></div>
+  <div class="museum-card"><div class="icon">🤝</div><div class="label">Historic Co-Championship</div><div class="title">Luke Scheessele & Brad Freiburger · 2022</div><div class="copy">The title was shared following the canceled Bills–Bengals game after Damar Hamlin’s medical emergency.</div></div>
+  <div class="museum-card"><div class="icon">🚀</div><div class="label">Highest Weekly Score</div><div class="title">${r.high.manager} · ${fmt(r.high.score,2)}</div><div class="copy">${r.high.year}, Week ${r.high.week}. The single biggest weekly total in league history.</div></div>
+  <div class="museum-card"><div class="icon">📸</div><div class="label">Closest Finish</div><div class="title">${closeWinner} · ${fmt(Math.abs(closest.homeScore-closest.awayScore),2)} points</div><div class="copy">${closest.year}, Week ${closest.week}: ${closest.homeMgr} vs ${closest.awayMgr}.</div></div>
+  <div class="museum-card"><div class="icon">💥</div><div class="label">Biggest Beatdown</div><div class="title">${blowWinner} · ${fmt(Math.abs(blow.homeScore-blow.awayScore),2)} points</div><div class="copy">${blow.year}, Week ${blow.week}: the largest margin ever recorded.</div></div>
+  <div class="museum-card"><div class="icon">📦</div><div class="label">Biggest Blockbuster</div><div class="title">${biggest.managerA} ↔ ${biggest.managerB}</div><div class="copy">${biggest.assetsA.length+biggest.assetsB.length} players changed hands on ${biggest.date}.</div></div>
+  <div class="museum-card"><div class="icon">🔁</div><div class="label">Most Traded Player</div><div class="title">${mostTraded[0]}</div><div class="copy">${mostTraded[1]} confirmed trade appearances across the archive.</div></div>
+  <div class="museum-card"><div class="icon">🎭</div><div class="label">Verified Team-Name Evolution</div><div class="title">Mike O.</div><div class="copy">The Hill Has Eyez later appeared in ESPN season data as Tony’s Little (AR) Friend during 2024.</div></div>
+  <div class="museum-card"><div class="icon">📜</div><div class="label">Archive Coverage</div><div class="title">2021–2025</div><div class="copy">${D.games.filter(g=>g.winner!='UNDECIDED').length} completed games, ${TRADES.length} confirmed trades, and ${D.managers.length} manager histories.</div></div>
+ </div>
+ <h3>Championship Gallery</h3>
+ <div class="trophy-cabinet">${D.seasons.map(s=>{const cs=s.coChampions||[s.champion];return `<div class="trophy-shelf"><div class="yr">${s.year}</div><div class="champ">${cs.map(c=>c.manager).join(' & ')}</div><div class="rings">${s.coChampions?'🏆🏆':'🏆'}</div><div class="small">${cs.map(c=>c.team).join(' / ')}</div></div>`}).join('')}</div>`;
+}
+
+function records(){let r=D.records,b=r.blowout,c=r.closest;$('#records').innerHTML=`${pageSignature('records','The Record Book','League Records','The highest, lowest, closest, and most dominant performances ever recorded in SDFF.')}<div class="award-grid">${award('🚀','Highest Weekly Score',r.high.manager,`${fmt(r.high.score,2)} · ${r.high.year} Week ${r.high.week}`)}${award('🧊','Lowest Weekly Score',r.low.manager,`${fmt(r.low.score,2)} · ${r.low.year} Week ${r.low.week}`)}${award('💥','Biggest Beatdown',b.homeScore>b.awayScore?b.homeMgr:b.awayMgr,`${fmt(Math.abs(b.homeScore-b.awayScore),2)}-point margin · ${b.year} Week ${b.week}`)}${award('📏','Photo Finish',c.homeScore>c.awayScore?c.homeMgr:c.awayMgr,`${fmt(Math.abs(c.homeScore-c.awayScore),2)}-point margin · ${c.year} Week ${c.week}`)}</div><h3>Top Single-Season Performances</h3><div id="seasonRecords"></div>`;let rows=[...D.teams].sort((a,b)=>b.pf-a.pf).slice(0,15);table($('#seasonRecords'),[['Manager',r=>r.manager],['Season',r=>r.year],['Team',r=>r.team],['Record',r=>`${r.wins}-${r.losses}`],['Points For',r=>fmt(r.pf,1)],['Finish',r=>r.finish]],rows)}
+function luck(){let rows=[...D.managers].sort((a,b)=>b.luck-a.luck),allplay=[...D.teams].sort((a,b)=>b.allPlayPct-a.allPlayPct).slice(0,15);$('#luck').innerHTML=`${pageSignature('luck','Expected vs Actual','Luck & Efficiency','Separate team quality from schedule fortune using all-play performance and expected wins.')}<div class="grid2"><div><h2>Career Luck Index</h2><div class="panel" id="luckBars"></div></div><div><h2>Translation for Normal People</h2><div class="panel"><p><b>Expected wins</b> measure how often your weekly score would have beaten the rest of the league.</p><p><b>Positive luck</b> means your schedule helped. Your schedule was more favorable than your weekly scoring would suggest.</p><p><b>Negative luck</b> means you scored well and still lost. Your schedule was less favorable than your weekly scoring would suggest.</p></div></div></div><h3>Best All-Play Seasons</h3><div id="allplayTable"></div>`;let max=Math.max(...rows.map(x=>Math.abs(x.luck)),1);$('#luckBars').innerHTML=rows.map(r=>`<div class="barrow"><div>${r.manager}</div><div class="track"><div class="fill" style="width:${100*Math.abs(r.luck)/max}%"></div></div><div class="${r.luck>=0?'pos':'neg'}">${r.luck>0?'+':''}${fmt(r.luck,1)}</div></div>`).join('');table($('#allplayTable'),[['Manager',r=>r.manager],['Season',r=>r.year],['Record',r=>`${r.wins}-${r.losses}`],['All-Play %',r=>pct(r.allPlayPct)],['Expected Wins',r=>fmt(r.expectedWins,1)],['Actual Wins',r=>r.wins],['Luck',r=>`<span class="${r.luck>=0?'pos':'neg'}">${r.luck>0?'+':''}${fmt(r.luck,1)}</span>`]],allplay)}
 function superlatives(){
  const ts=D.teams, ms=D.managers, rg=D.games.filter(g=>g.regular&&g.winner!='UNDECIDED');
  const best=[...ts].sort((a,b)=>b.wins-a.wins||b.pf-a.pf)[0], worst=[...ts].sort((a,b)=>a.wins-b.wins||a.pf-b.pf)[0];
@@ -990,7 +1141,7 @@ function superlatives(){
  ['🪨','Steadiest Finisher',consistent.m,`${fmt(consistent.sd,1)} finish-position SD`,`The smallest variation in year-end finishing position.`],
  ['👻','One-Hit Wonder',onehit.m,`Best: ${onehit.best} · Other-year avg: ${fmt(onehit.other,1)}`,`The largest gap between one standout finish and the manager's remaining seasons.`]
  ];
- $('#superlatives').innerHTML=`<h2>League Superlatives</h2><div class="subtitle">Notable performances, résumés and statistical extremes.</div><div class="section-note">Select any card for the underlying context. All awards use completed 2021–2025 data.</div><div class="award-grid">${cards.map(x=>award(...x)).join('')}</div>`
+ $('#superlatives').innerHTML=`${pageSignature('superlatives','Annual Awards','League Superlatives','The strongest résumés, wildest extremes, and most memorable season-level achievements.')}<h2 style="display:none">League Superlatives</h2><div class="subtitle">Notable performances, résumés and statistical extremes.</div><div class="section-note">Select any card for the underlying context. All awards use completed 2021–2025 data.</div><div class="award-grid">${cards.map(x=>award(...x)).join('')}</div>`
 }
 function renderDraft(){let y=+$('#draftYear').value,m=$('#draftMgr').value,rows=D.drafts.filter(x=>x.year==y&&(!m||x.manager==m)).sort((a,b)=>a.overall-b.overall);$('#draftGrid').innerHTML=rows.map(p=>`<div class="pick"><div class="pk">#${p.overall} · Round ${p.round}.${p.roundPick}</div><div class="pl">${p.player}</div><div class="mg">${p.manager}${p.keeper?' · Keeper':''}</div></div>`).join('')}
 function wacky(){
@@ -1044,7 +1195,7 @@ function wacky(){
  ];
  $('#wacky').innerHTML=`${pageHero('Oddities & Extremes','Wacky Stats','The strange, unlucky and statistically ridiculous corners of league history.')}<h2 style="display:none">Wacky Stats</h2><div class="subtitle">Oddities, extremes and highly specific accomplishments.</div><div class="section-note">Select any card for the season, matchup or calculation behind the statistic.</div><div class="award-grid">${cards.map(x=>award(...x)).join('')}</div>`
 }
-function matchups(){let years=D.seasons.map(s=>s.year).sort((a,b)=>b-a),latest=years[0];$('#matchups').innerHTML=`<div class="ctrls"><select id="matchYear">${years.map(y=>`<option value="${y}"${y===latest?' selected':''}>${y}</option>`).join('')}</select><select id="matchWeek"></select></div><div id="matchList" class="panel"></div>`;$('#matchYear').onchange=()=>{let y=+$('#matchYear').value,w=[...new Set(D.games.filter(g=>g.year==y).map(g=>g.week))].sort((a,b)=>a-b);$('#matchWeek').innerHTML=w.map(x=>`<option>${x}</option>`).join('');renderMatches()};$('#matchWeek').onchange=renderMatches;$('#matchYear').onchange()}
+function matchups(){let years=D.seasons.map(s=>s.year).sort((a,b)=>b-a),latest=years[0];$('#matchups').innerHTML=`${pageSignature('matchups','Game Archive','Matchups','Search every completed matchup by season, week, and manager, with the full scoring record preserved.')}<div class="ctrls"><select id="matchYear">${years.map(y=>`<option value="${y}"${y===latest?' selected':''}>${y}</option>`).join('')}</select><select id="matchWeek"></select></div><div id="matchList" class="panel"></div>`;$('#matchYear').onchange=()=>{let y=+$('#matchYear').value,w=[...new Set(D.games.filter(g=>g.year==y).map(g=>g.week))].sort((a,b)=>a-b);$('#matchWeek').innerHTML=w.map(x=>`<option>${x}</option>`).join('');renderMatches()};$('#matchWeek').onchange=renderMatches;$('#matchYear').onchange()}
 function renderMatches(){let y=+$('#matchYear').value,w=+$('#matchWeek').value,gs=D.games.filter(g=>g.year==y&&g.week==w);$('#matchList').innerHTML=gs.map(g=>`<div class="match"><div><b>${g.homeMgr}</b><div class="note">${g.home}</div></div><div class="score">${fmt(g.homeScore,2)} – ${fmt(g.awayScore,2)}<div style="text-align:center"><span class="pill">${g.tier==='NONE'?'Regular Season':g.tier.replaceAll('_',' ')}</span></div></div><div class="r"><b>${g.awayMgr}</b><div class="note">${g.away}</div></div></div>`).join('')||'<div class="note">No matchups</div>'}
 
 function setupMobileUI(){
@@ -1079,5 +1230,5 @@ function setupMobileUI(){
   });
 }
 
-initNav();initAwardModal();overview();managers();standings();seasons();h2h();trades();records();luck();superlatives();wacky();matchups();setupMobileUI();
+initNav();initAwardModal();overview();managers();standings();seasons();h2h();trades();museum();records();luck();superlatives();wacky();matchups();setupMobileUI();
 </script></body></html>
